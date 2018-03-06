@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 import Restaurant from './restaurant'
 import RestaurantSelectButtons from './restaurant_select_buttons'
-import YelpApi from '../yelp_api'
+
+// What do we need to store?
+// We need a way to search for restaurants so that the app can give us options
+
+// We need to show a single restaurant on the page, with a Yes or No button
+
+// when user clicks on NO
+// => move currentRestaurant to rejectedRestaurants
+
+// when user clicks on YES
+// => move currentRestaurant to acceptedRestaurants
+//    and move to restaurant detail page.
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+        rejectedRestaurants: [],
+        acceptedRestaurants: [],
+        currentRestaurant: {},
+        restaurantsFromSearch: []
     }
   }
 
