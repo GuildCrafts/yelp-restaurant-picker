@@ -1,18 +1,8 @@
+const { makeQuery } = require('../common/utils')
 const axios = require('axios')
 // TODO: move this api key to a config
 const API_KEY = 'sI39JsXMm8NaNk1HpOMYyPecQSCnJZikmb4AH0q3efcP4uiElXOqDS-rqfkzDH8NHNj6GRO3IO28xPNM22LXZhifp-b9IhE5ontj0zhjqm7Ltu1agfbRO6e0guOeWnYx'
 
-
-function makeQuery(obj) {
-  var result = '?'
-  for(let key in obj) {
-    let str = obj[key] && obj[key].replace(/\s/g, '+')
-    if(str) {
-      result += `${key}=${str}&`
-    }
-  }
-  return result.slice(0, -1)
-}
 
 function search(options) {
   let queryString = makeQuery(options)
@@ -26,6 +16,10 @@ function search(options) {
       return { error: true, message: err.message }
     })
   }
+
+function topRestaurants() {
+
+}
 
 module.exports = {
   search
