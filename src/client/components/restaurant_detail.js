@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 export default (props) => {
   console.log('props:', props);
@@ -7,10 +7,10 @@ export default (props) => {
   return (
     <div>
       <span>Yayy you are going to have a fabulous meal at {name}!</span>
-      Address:
-      {address1}
-      {address2}
-      {city}
+      <div>Address:</div>
+      <div>{address1}</div>
+      <div>{address2}</div>
+      <div>{city}</div>
     </div>
   )
 }

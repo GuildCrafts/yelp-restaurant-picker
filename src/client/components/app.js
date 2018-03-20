@@ -53,7 +53,10 @@ export default class App extends Component {
     console.log('re-rendering App', this.state);
     const {restaurantsFromSearch, currentRestaurantIndex, acceptedRestaurantIndex} = this.state
     if(acceptedRestaurantIndex >= 0) {
-      <RestaurantDetail restaurant={restaurantsFromSearch[acceptedRestaurantIndex]} />
+      return (
+        <RestaurantDetail restaurant={restaurantsFromSearch[acceptedRestaurantIndex]} />
+      )
+
     }
     else if(restaurantsFromSearch.length > 0) {
       let restaurant = restaurantsFromSearch[currentRestaurantIndex]
