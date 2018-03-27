@@ -4,6 +4,8 @@ import Restaurant from './restaurant'
 import RestaurantDetail from './restaurant_detail'
 import RestaurantSelectButtons from './restaurant_select_buttons'
 import { makeQuery } from '../../common/utils'
+import { connect } from 'react-redux'
+import { searchRestaurants, rejectRestaurant, acceptRestaurant } from '../actions'
 
 // What do we need to store?
 // We need a way to search for restaurants so that the app can give us options
@@ -17,41 +19,30 @@ import { makeQuery } from '../../common/utils'
 // => move currentRestaurant to acceptedRestaurants
 //    and move to restaurant detail page.
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-        rejectedRestaurants: [],
-        acceptedRestaurantIndex: -1,
-        restaurantsFromSearch: [],
-        currentRestaurantIndex: 0
-    }
     this.onRestaurantReject = this.onRestaurantReject.bind(this)
     this.onRestaurantAccept = this.onRestaurantAccept.bind(this)
   }
 
   onRestaurantReject() {
-    this.setState({currentRestaurantIndex: this.state.currentRestaurantIndex + 1})
+    this.props.rejectRestaurant()
   }
 
   onRestaurantAccept() {
     console.log('calling onRestaurantAccept');
-    this.setState({acceptedRestaurantIndex: this.state.currentRestaurantIndex})
+    this.props.acceptRestaurant(this.props.currentRestaurantIndex)
   }
 
   componentDidMount() {
     let queryString = makeQuery({location: "Oakland"})
     // TODO : add a config for base_url
-    fetch(`http://localhost:3000/yelp/search${queryString}`)
-      .then(resp => resp.json())
-      .then(json => {
-          this.setState({restaurantsFromSearch: json})
-      })
+    this.props.searchRestaurants(queryString)
   }
 
   render() {
-    console.log('re-rendering App', this.state);
-    const {restaurantsFromSearch, currentRestaurantIndex, acceptedRestaurantIndex} = this.state
+    const {restaurantsFromSearch, currentRestaurantIndex, acceptedRestaurantIndex} = this.props
     if(acceptedRestaurantIndex >= 0) {
       return (
         <RestaurantDetail restaurant={restaurantsFromSearch[acceptedRestaurantIndex]} />
@@ -72,6 +63,20 @@ export default class App extends Component {
     }
   }
 }
+
+const mapStateToProps = function(state) {
+  const {restaurantsFromSearch, currentRestaurantIndex, acceptedRestaurantIndex} = state
+  return {
+    restaurantsFromSearch,
+    currentRestaurantIndex,
+    acceptedRestaurantIndex
+  }
+}
+
+const mapDispatchToProps = { searchRestaurants, rejectRestaurant, acceptRestaurant }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
+
 
 /*
 

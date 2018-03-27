@@ -1,4 +1,10 @@
 import { combineReducers } from 'redux';
+import { SEARCH_RESTAURANTS_PENDING,
+         SEARCH_RESTAURANTS_REJECTED,
+         SEARCH_RESTAURANTS_FULFILLED,
+         REJECT_RESTAURANT,
+         ACCEPT_RESTAURANT
+       } from '../actions'
 
 const FETCH_POSTS = 'FETCH_POSTS'
 const FETCH_PROFILE = 'FETCH_PROFILE'
@@ -31,11 +37,51 @@ const postsReducer = (posts=[], action) => {
   }
 }
 
+const restaurantsFromSearchReducer = (restaurantsFromSearch=[], action) => {
+  switch(action.type) {
+    case SEARCH_RESTAURANTS_FULFILLED:
+      console.log('action.payload::', action.payload)
+      return action.payload
+    case SEARCH_RESTAURANTS_PENDING, SEARCH_RESTAURANTS_REJECTED:
+      return restaurantsFromSearch
+    default:
+      return restaurantsFromSearch
+  }
+}
+
+const currentRestaurantIndexReducer = (currentRestaurantIndex=0, action) => {
+  switch(action.type) {
+    case REJECT_RESTAURANT:
+      return currentRestaurantIndex + 1
+    default:
+      return currentRestaurantIndex
+  }
+}
+
+const acceptedRestaurantIndexReducer = (acceptedRestaurantIndex=-1, action) => {
+  switch(action.type) {
+    case ACCEPT_RESTAURANT:
+      return action.payload.acceptedRestaurantIndex
+    default:
+      return acceptedRestaurantIndex
+  }
+}
+
 const rootReducer = combineReducers({
-  posts: postsReducer,
-  profile: profileReducer,
-  //restaurants: restaurantsReducer
+  restaurantsFromSearch: restaurantsFromSearchReducer,
+  currentRestaurantIndex: currentRestaurantIndexReducer,
+  acceptedRestaurantIndex: acceptedRestaurantIndexReducer,
+  posts: postsReducer
 });
+
+/*
+1. write your reducer function
+2. write your action creator function, it could return a promise payload or regular object
+3a. connect the redux store to the component, and make it a container
+3b. as part of connecting the store you have to implement, mapStateToProps
+3c. implement mapDispatchToProps, import all the action creators that you will need in the component
+4. use the state(passed in as props) & the action creators in the container.
+*/
 
 
 export default rootReducer;
