@@ -1,25 +1,47 @@
-# ReduxSimpleStarter
+# Yelp Restaurant Picker
+This repo is the evolution of the React Redux workshop conducted by @punitrathore at the Guild. The workshop was divided into four phases, listed below.
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+# React Redux Workshop
 
-### Getting Started
+### Phase 1:
+  - Basic React concepts
+  - Component, State, Props
+  - Stateless Component
+  - Component with State
+  - Passing functions as props
+  - Creating basic components for the app.
 
-There are two methods for getting started with this repo.
+### Phase 2:
+  - Connecting to an external API (yelp)
+  - Creating a proxy to talk to yelp via the backend server.
+  - Updating components and connecting to the backend server
 
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
+### Phase 3:
+  - Redux concepts
+  - Actions, action creators, redux store
+  - middlewares
+ 
+### Phase 4:
+  - Port the React app to use Redux
 
+
+# Installation
+
+Run the following in a terminal
+```bash
+npm install
 ```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
-> npm install
-> npm start
+
+# Starting the development server
+
+There are two servers that need to be started. The front end server, and the back end server.
+
+In two separate terminal windows run the command
+
+```bash
+npm run start-client
 ```
 
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
-
-```
-> npm install
-> npm start
+```bash
+npm run start-server
 ```
