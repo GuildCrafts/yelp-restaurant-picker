@@ -24,6 +24,10 @@ Yelp Restaurant Picker is a `Tinder` for restaurants, allowing you to quickly fi
 ### Phase 4:
   - Port the React app to use Redux
 
+# Youtube Videos
+
+[Here](https://www.youtube.com/watch?v=S_uhK5kd0pE&list=PLcSbxZVkmW_i2ovn0cZ5nTqb542uhrXVb) is the link to all the videos of the workshop.
+
 
 # Installation
 
