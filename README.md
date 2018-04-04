@@ -1,5 +1,5 @@
 # Yelp Restaurant Picker
-This repo is the evolution of the React Redux workshop conducted by @punitrathore at the Guild. The workshop was divided into four phases, listed below.
+Yelp Restaurant Picker is a `Tinder` for restaurants, allowing you to quickly find a restaurant around your current location. This repo is the evolution of the React Redux workshop conducted by @punitrathore at the Guild. The workshop was divided into four phases, listed below.
 
 # React Redux Workshop
 
