@@ -49,3 +49,7 @@ npm run start-client
 ```bash
 npm run start-server
 ```
+
+## Base Repo
+
+This repo is based on the Stephen Grider repo - https://github.com/StephenGrider/ReduxSimpleStarter
